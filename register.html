@@ -24,6 +24,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+
+<script>
+	$(document).ready(function () {
+			var $register = $('#rform');
+
+			$register.validate({
+				rules:{
+
+					phone: {
+						minlength: 10,
+						maxlength: 10
+					},
+					password: {
+						minlength: 5
+					},
+					confirm_password: {
+						equalTo: '#Password'
+					},
+					zip: {
+						maxlength: 6,
+						minlength: 6
+					}
+
+				},
+				messages: {
+					cpassword: {
+						equalTo: "please enter same password"
+					}
+				}
+			});
+		});
+</script>
 </head>
 <body>
 <div class="header-top-w3layouts">
@@ -163,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="main-agileits">
 				<div class="form-w3agile">
 					<h3>Register</h3>
-					<form action="authentication.php" method="post">
+					<form id="rform" action="registration.php" method="post">
 						<div class="key">
 							<i class="fa fa-user" aria-hidden="true"></i>
 							<input  type="text"  name="firstname" required=""  placeholder="First Name">
@@ -226,7 +259,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="key">
 							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input  type="password"  name="password"  required="" placeholder="Password">
+							<input id="Password"  type="password"  name="password"  required="" placeholder="Password">
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
