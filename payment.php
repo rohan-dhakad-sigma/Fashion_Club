@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Register :: w3layouts</title>
+<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Contact :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -24,41 +24,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-
-<script>
-	$(document).ready(function () {
-			var $register = $('#rform');
-
-			$register.validate({
-				rules:{
-
-					phone: {
-						minlength: 10,
-						maxlength: 10
-					},
-					password: {
-						minlength: 5
-					},
-					confirm_password: {
-						equalTo: '#Password'
-					},
-					zip: {
-						maxlength: 6,
-						minlength: 6
-					}
-
-				},
-				messages: {
-					cpassword: {
-						equalTo: "please enter same password"
-					}
-				}
-			});
-		});
-</script>
 </head>
 <body>
+<!-- Login session is started -->
+<?php
+	session_start();
+	if(isset($_SESSION['userfname']))
+	{
+?>
+			
+	<div class="logout">
+		<button onclick=handle_logout()>LogOut</button>		
+	</div>
+
+<?php
+	}
+?>
+<!-- Log Out Script -->
+<script>
+	function handle_logout() {
+		window.location.href = 'logout.php';
+	}
+</script>
+
+
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -87,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li class=" active"><a href="index.php" class="hyper "><span>Home</span></a></li>	
+						<li><a href="index.php" class="hyper "><span>Home</span></a></li>	
 						<li class="dropdown ">
 							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Clothing<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
@@ -152,7 +141,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 						</li>
 						<li><a href="about.php" class="hyper"><span>About</span></a></li>
-						<li><a href="contact.php" class="hyper"><span>Contact Us</span></a></li>
+						<li class=" active"><a href="contact.php" class="hyper"><span>Contact Us</span></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -191,88 +180,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 	</div>
 </div>
-	<div class="login">
-	
-		<div class="main-agileits">
-				<div class="form-w3agile">
-					<h3>Register</h3>
-					<form id="rform" action="registration.php" method="post">
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="firstname" required=""  placeholder="First Name">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="lastname" required=""  placeholder="Last Name">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="username" required=""  placeholder="Username">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-							<input  type="text"  name="email"  required=""  placeholder="Email">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="address1" required=""  placeholder="Address1">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="address2" required=""  placeholder="Address2">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="city" required=""  placeholder="City">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="state" required=""  placeholder="State">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="zip" required=""  placeholder="ZIP Code">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="country" required=""  placeholder="Country">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="phone" required=""  placeholder="Phone number">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="file"  name="myfile" placeholder="Upload Document">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input id="Password"  type="password"  name="password"  required="" placeholder="Password">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input  type="password" name="confirm_password" required="" placeholder="Confirm Password">
-							<div class="clearfix"></div>
-						</div>
-						<input type="submit" value="Register">
-					</form>
-				</div>
-			</div>
+<div class="payment">
+	<div class="container">
+		<h3>Payments</h3>
+		<div class="payq1">
+			<h4>How do I pay for a Fashion Club purchase?</h4>
+			<p>Quisque sagittis convallis erat, sed vestibulum odio molestie in. Vivamus et urna lacus. Aliquam vitae risus in sem aliquam ultricies. Sed rutrum cursus sagittis congue eros at lacinia tempor. Phasellus id auctor tortor.</p>
+			<p class="w3-agile">Aenean pulvinar lacinia dictum. Nulla id erat eget velit elementum elementum. Ut turpis ligula, placerat nec purus quis, suscipit suscipit lectus. Aliquam et commodo eros.Morbi cursus auctor nisi nec dictum</p>
 		</div>
-		<!-- newsletter -->
+		<div class="payq2">
+			<h4>What is Cash on Delivery?</h4>
+			<p>Etiam id elit a massa pellentesque venenatis. Vivamus sit amet fermentum mi, id feugiat eros. Morbi dignissim nibh eu lectus porttitor blandit. Duis consequat tellus velit, nec pretium nisi fringilla quis.</p>
+			<p class="w3-agile">Sed consectetur sollicitudin orci, quis feugiat lacus finibus nec. Curabitur egestas et orci vitae efficitur. Cras et mauris vel odio malesuada scelerisque. Curabitur id finibus orci. Vestibulum porta nunc cursus magna placerat pellentesque. </p>
+		</div>
+		<div class="payq3">
+			<h4>How do I pay using a credit/debit card?</h4>
+			<p>Aenean euismod maximus suscipit. Morbi odio massa, feugiat at mi et, rutrum convallis odio. Integer aliquet bibendum mi, eu auctor purus euismod non. In hac habitasse platea dictumst.</p>
+			<p class="w3-agile">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum blandit leo in nulla vulputate, sollicitudin tristique lectus molestie. Donec volutpat turpis augue, et pretium diam pulvinar non.</p>
+		</div>
+	</div>
+</div>
+<!-- newsletter -->
 	<div class="newsletter">
 		<div class="container">
 			<div class="col-md-6 w3agile_newsletter_left">

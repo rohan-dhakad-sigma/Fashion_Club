@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Register :: w3layouts</title>
+<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | About :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -24,41 +24,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-
-<script>
-	$(document).ready(function () {
-			var $register = $('#rform');
-
-			$register.validate({
-				rules:{
-
-					phone: {
-						minlength: 10,
-						maxlength: 10
-					},
-					password: {
-						minlength: 5
-					},
-					confirm_password: {
-						equalTo: '#Password'
-					},
-					zip: {
-						maxlength: 6,
-						minlength: 6
-					}
-
-				},
-				messages: {
-					cpassword: {
-						equalTo: "please enter same password"
-					}
-				}
-			});
-		});
-</script>
 </head>
 <body>
+<?php
+	session_start();
+	if(isset($_SESSION['userfname']))
+	{
+?>
+			
+	<div class="logout">
+		<button onclick=handle_logout()>LogOut</button>		
+	</div>
+
+<?php
+	}
+?>
+<!-- Log Out Script -->
+<script>
+	function handle_logout() {
+		window.location.href = 'logout.php';
+	}
+</script>
+
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -87,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li class=" active"><a href="index.php" class="hyper "><span>Home</span></a></li>	
+						<li><a href="index.php" class="hyper "><span>Home</span></a></li>	
 						<li class="dropdown ">
 							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Clothing<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
@@ -151,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>	
 								</ul>
 						</li>
-						<li><a href="about.php" class="hyper"><span>About</span></a></li>
+						<li class=" active"><a href="about.php" class="hyper"><span>About</span></a></li>
 						<li><a href="contact.php" class="hyper"><span>Contact Us</span></a></li>
 					</ul>
 				</div>
@@ -191,88 +178,185 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 	</div>
 </div>
-	<div class="login">
-	
-		<div class="main-agileits">
-				<div class="form-w3agile">
-					<h3>Register</h3>
-					<form id="rform" action="registration.php" method="post">
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="firstname" required=""  placeholder="First Name">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="lastname" required=""  placeholder="Last Name">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="username" required=""  placeholder="Username">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-							<input  type="text"  name="email"  required=""  placeholder="Email">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="address1" required=""  placeholder="Address1">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="address2" required=""  placeholder="Address2">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="city" required=""  placeholder="City">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="state" required=""  placeholder="State">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="zip" required=""  placeholder="ZIP Code">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="country" required=""  placeholder="Country">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="phone" required=""  placeholder="Phone number">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="file"  name="myfile" placeholder="Upload Document">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input id="Password"  type="password"  name="password"  required="" placeholder="Password">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input  type="password" name="confirm_password" required="" placeholder="Confirm Password">
-							<div class="clearfix"></div>
-						</div>
-						<input type="submit" value="Register">
-					</form>
-				</div>
+<div class="sub-banner">
+</div>
+<div class="about">
+	<div class="container"> 
+		<h3>About Us</h3>
+		<div class="about-info">
+			<div class="col-md-8 about-grids">
+				<h4>Our latest collection</h4>
+				<p>Dignissimos at vero eos et accusamus et iusto odio ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecat officia. </p>		
+					<div class="about-w3ls-row">
+						<script type="text/javascript">
+								 $(window).load(function() {
+									$("#flexiselDemo3").flexisel({
+										visibleItems:2,
+										animationSpeed: 1000,
+										autoPlay: false,
+										autoPlaySpeed: 3000,    		
+										pauseOnHover: true,
+										enableResponsiveBreakpoints: true,
+										responsiveBreakpoints: { 
+											portrait: { 
+												changePoint:480,
+												visibleItems:2
+											}, 
+											landscape: { 
+												changePoint:640,
+												visibleItems:2
+											},
+											tablet: { 
+												changePoint:768,
+												visibleItems:2
+											}
+										}
+									});
+									
+								});
+						</script>
+						<script type="text/javascript" src="js/jquery.flexisel.js"></script> 
+						<ul id="flexiselDemo3">
+							<li>
+								<img src="images/a1.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/a2.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/a3.jpg" class="img-responsive" alt="" />
+							</li>
+							<li> 
+								<img src="images/a4.jpg" class="img-responsive" alt="" />
+							</li>
+						</ul> 
+						<div class="clearfix"> </div>
+					</div>
 			</div>
+			<div class="col-md-4 about-grids">
+					<h4>Our Advantages</h4>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>01</h5>
+						</div>
+						<div class="pince-right">
+							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>02</h5>
+						</div>
+						<div class="pince-right">
+							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>03</h5>
+						</div>
+						<div class="pince-right">
+							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>04</h5>
+						</div>
+						<div class="pince-right">
+							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+			</div>
+			<div class="clearfix"> </div>
 		</div>
-		<!-- newsletter -->
+	</div>
+</div>
+<!-- //about -->
+<!-- about-bottom -->
+	<div class="about-bottom">
+		<div class="container">
+			<h3> Flat <span>50%</span> Off</h3>
+			<h4>On women Accessories</h4>
+			<a href="jewellery.php">Shop Now</a>
+		</div>
+	</div>
+<!-- //about-bottom -->
+<!--team-->
+<div class="team" id="team">
+	<div class="container">
+		<h3> Our Team</h3>
+		<div class="team-grids">
+			<div class="col-md-3 team-grid">
+									<div class="team-img">
+										<img src="images/t1.jpg" class="img-responsive" alt=" " />
+										<figcaption class="overlay">
+											<div class="social-icon">
+												<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+												<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+												<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+												<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+											</div>
+										</figcaption>
+									</div>
+									<h4>John Filmr Doe</h4>
+									<h5>Managing Director</h5>
+			</div>
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="images/t3.jpg" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Jaye Smith</h4>
+				<h5>Lead Developer</h5>
+			</div>
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="images/t2.jpg" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Mike Arney</h4>
+				<h5>Fashion Designer</h5>
+			</div>
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="images/t4.jpg" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>Michele Lampa</h4>
+				<h5>fashion Designer</h5>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--team-->
+<!-- newsletter -->
 	<div class="newsletter">
 		<div class="container">
 			<div class="col-md-6 w3agile_newsletter_left">
