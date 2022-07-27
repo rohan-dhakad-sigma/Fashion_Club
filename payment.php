@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Login :: w3layouts</title>
+<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Contact :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -26,6 +26,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/bootstrap.js"></script>
 </head>
 <body>
+<!-- Login session is started -->
+<?php
+	session_start();
+	if(isset($_SESSION['userfname']))
+	{
+?>
+			
+	<div class="logout">
+		<button onclick=handle_logout()>LogOut</button>		
+	</div>
+
+<?php
+	}
+?>
+<!-- Log Out Script -->
+<script>
+	function handle_logout() {
+		window.location.href = 'logout.php';
+	}
+</script>
+
+<style>
+	.logout {
+		margin:10px;
+		margin-left:1203px;
+	}
+</style>
+
+
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -54,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li class=" active"><a href="index.php" class="hyper "><span>Home</span></a></li>	
+						<li><a href="index.php" class="hyper "><span>Home</span></a></li>	
 						<li class="dropdown ">
 							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Clothing<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
@@ -119,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 						</li>
 						<li><a href="about.php" class="hyper"><span>About</span></a></li>
-						<li><a href="contact.php" class="hyper"><span>Contact Us</span></a></li>
+						<li class=" active"><a href="contact.php" class="hyper"><span>Contact Us</span></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -150,49 +179,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<!-- AutoComplete Search CSS Code -->
 		<style>
-			ul {
-				background-color: #eee;
-				cursor: pointer;
-			}
-	
-			li {
-				padding: 12px;
-			}
-			</style>
-	
-			<!-- AutoComplete Search Ajax Code -->
-			<script>
-		$(document).ready(function()
-		{
-			$('#search').keyup(function()
-			{
-				var query = $(this).val();
-	
-				if(query != '')
-				{
-					$.ajax({
-							url:"auto_search.php",
-							method:"POST",
-							data:{query:query},
-							success:function(data)
-							{
-								$('#productlist').fadeIn();
-								$('#productlist').html(data);
-							}
-					});
-				}
-				else{
-					$('#productlist').fadeOut();
-					$('#productlist').html("");
-				}
-			});
-	
-			$(document).on('click','li',function(){
-				$('#search').val($(this).text());
-				$('#productlist').fadeOut();
-			})
-		});
-	</script>
+        ul {
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        li {
+            padding: 12px;
+        }
+    	</style>
+
+		<!-- AutoComplete Search Ajax Code -->
+		<script>
+    $(document).ready(function()
+    {
+        $('#search').keyup(function()
+        {
+            var query = $(this).val();
+
+            if(query != '')
+            {
+                $.ajax({
+                        url:"auto_search.php",
+                        method:"POST",
+                        data:{query:query},
+                        success:function(data)
+                        {
+                            $('#productlist').fadeIn();
+                            $('#productlist').html(data);
+                        }
+                });
+            }
+            else{
+                $('#productlist').fadeOut();
+                $('#productlist').html("");
+            }
+        });
+
+        $(document).on('click','li',function(){
+            $('#search').val($(this).text());
+            $('#productlist').fadeOut();
+        })
+    });
+</script>
 
 		<div class="col-md-1 cart-wthree">
 			<div class="cart"> 
@@ -206,33 +235,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 	</div>
 </div>
-	<div class="login">
-	
-		<div class="main-agileits">
-				<div class="form-w3agile">
-					<h3>Login</h3>
-					<form action="login.php" method="post">
-						<div class="key">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-							<input  type="text" name="Email" required="" placeholder="Email or Phone number">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input  type="password" name="Password" required="" placeholder="Password">
-							<div class="clearfix"></div>
-						</div>
-						<input type="submit" value="Login">
-					</form>
-				</div>
-				<div class="forg">
-					<a href="#" class="forg-left">Forgot Password</a>
-					<a href="register.html" class="forg-right">Register</a>
-				<div class="clearfix"></div>
-				</div>
-			</div>
+<div class="payment">
+	<div class="container">
+		<h3>Payments</h3>
+		<div class="payq1">
+			<h4>How do I pay for a Fashion Club purchase?</h4>
+			<p>Quisque sagittis convallis erat, sed vestibulum odio molestie in. Vivamus et urna lacus. Aliquam vitae risus in sem aliquam ultricies. Sed rutrum cursus sagittis congue eros at lacinia tempor. Phasellus id auctor tortor.</p>
+			<p class="w3-agile">Aenean pulvinar lacinia dictum. Nulla id erat eget velit elementum elementum. Ut turpis ligula, placerat nec purus quis, suscipit suscipit lectus. Aliquam et commodo eros.Morbi cursus auctor nisi nec dictum</p>
 		</div>
-		<!-- newsletter -->
+		<div class="payq2">
+			<h4>What is Cash on Delivery?</h4>
+			<p>Etiam id elit a massa pellentesque venenatis. Vivamus sit amet fermentum mi, id feugiat eros. Morbi dignissim nibh eu lectus porttitor blandit. Duis consequat tellus velit, nec pretium nisi fringilla quis.</p>
+			<p class="w3-agile">Sed consectetur sollicitudin orci, quis feugiat lacus finibus nec. Curabitur egestas et orci vitae efficitur. Cras et mauris vel odio malesuada scelerisque. Curabitur id finibus orci. Vestibulum porta nunc cursus magna placerat pellentesque. </p>
+		</div>
+		<div class="payq3">
+			<h4>How do I pay using a credit/debit card?</h4>
+			<p>Aenean euismod maximus suscipit. Morbi odio massa, feugiat at mi et, rutrum convallis odio. Integer aliquet bibendum mi, eu auctor purus euismod non. In hac habitasse platea dictumst.</p>
+			<p class="w3-agile">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum blandit leo in nulla vulputate, sollicitudin tristique lectus molestie. Donec volutpat turpis augue, et pretium diam pulvinar non.</p>
+		</div>
+	</div>
+</div>
+<!-- newsletter -->
 	<div class="newsletter">
 		<div class="container">
 			<div class="col-md-6 w3agile_newsletter_left">
