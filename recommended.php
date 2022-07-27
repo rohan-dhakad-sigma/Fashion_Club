@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Register :: w3layouts</title>
+<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Cart :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -24,40 +24,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-
-<script>
-	$(document).ready(function () {
-			var $register = $('#rform');
-
-			$register.validate({
-				rules:{
-
-					phone: {
-						minlength: 10,
-					},
-					password: {
-						minlength: 5
-					},
-					confirm_password: {
-						equalTo: '#Password'
-					},
-					zip: {
-						maxlength: 6,
-						minlength: 6
-					}
-
-				},
-				messages: {
-					cpassword: {
-						equalTo: "please enter same password"
-					}
-				}
-			});
-		});
-</script>
 </head>
 <body>
+<!-- Login session is started -->
+<?php
+	session_start();
+	if(isset($_SESSION['userfname']))
+	{
+?>
+			
+	<div class="account">
+		<button onclick=my_account()>My Account</button>
+	</div>
+			
+	<div class="logout">
+		<button onclick=handle_logout()>LogOut</button>		
+	</div>
+
+<?php
+	}
+?>
+<!-- Log Out Script -->
+<script>
+	function handle_logout() {
+		window.location.href = 'logout.php';
+	}
+
+	function my_account() {
+		window.location.href = 'account.php';
+	}
+</script>
+
+<style>
+	.logout {
+		margin:20px;
+		margin-left:1203px;
+		margin-top:-44px;
+	}
+
+	.account {
+		margin:20px;
+	}
+</style>
+
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
@@ -86,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li class=" active"><a href="index.php" class="hyper "><span>Home</span></a></li>	
+						<li><a href="index.php" class="hyper "><span>Home</span></a></li>	
 						<li class="dropdown ">
 							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Clothing<b class="caret"></b></span></a>
 								<ul class="dropdown-menu multi">
@@ -182,49 +191,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<!-- AutoComplete Search CSS Code -->
 		<style>
-			ul {
-				background-color: #eee;
-				cursor: pointer;
-			}
-	
-			li {
-				padding: 12px;
-			}
-			</style>
-	
-			<!-- AutoComplete Search Ajax Code -->
-			<script>
-		$(document).ready(function()
-		{
-			$('#search').keyup(function()
-			{
-				var query = $(this).val();
-	
-				if(query != '')
-				{
-					$.ajax({
-							url:"auto_search.php",
-							method:"POST",
-							data:{query:query},
-							success:function(data)
-							{
-								$('#productlist').fadeIn();
-								$('#productlist').html(data);
-							}
-					});
-				}
-				else{
-					$('#productlist').fadeOut();
-					$('#productlist').html("");
-				}
-			});
-	
-			$(document).on('click','li',function(){
-				$('#search').val($(this).text());
-				$('#productlist').fadeOut();
-			})
-		});
-	</script>
+        ul {
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        li {
+            padding: 12px;
+        }
+    	</style>
+
+		<!-- AutoComplete Search Ajax Code -->
+		<script>
+    $(document).ready(function()
+    {
+        $('#search').keyup(function()
+        {
+            var query = $(this).val();
+
+            if(query != '')
+            {
+                $.ajax({
+                        url:"auto_search.php",
+                        method:"POST",
+                        data:{query:query},
+                        success:function(data)
+                        {
+                            $('#productlist').fadeIn();
+                            $('#productlist').html(data);
+                        }
+                });
+            }
+            else{
+                $('#productlist').fadeOut();
+                $('#productlist').html("");
+            }
+        });
+
+        $(document).on('click','li',function(){
+            $('#search').val($(this).text());
+            $('#productlist').fadeOut();
+        })
+    });
+</script>
 
 		<div class="col-md-1 cart-wthree">
 			<div class="cart"> 
@@ -238,88 +247,128 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 	</div>
 </div>
-	<div class="login">
-	
-		<div class="main-agileits">
-				<div class="form-w3agile">
-					<h3>Register</h3>
-					<form id="rform" action="/registration.php" method="post">
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="firstname" required=""  placeholder="First Name">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="lastname" required=""  placeholder="Last Name">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="username" required=""  placeholder="Username">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-							<input  type="text"  name="email"  required=""  placeholder="Email">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="address1" required=""  placeholder="Address1">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="address2" required=""  placeholder="Address2">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="city" required=""  placeholder="City">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="state" required=""  placeholder="State">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="zip" required=""  placeholder="ZIP Code">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="country" required=""  placeholder="Country">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="text"  name="phone" required=""  placeholder="Phone number">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<input  type="file"  name="idDocument" placeholder="Upload Document">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input id="Password"  type="password"  name="password"  required="" placeholder="Password">
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-							<input  type="password" name="confirm_password" required="" placeholder="Confirm Password">
-							<div class="clearfix"></div>
-						</div>
-						<input type="submit" value="Register">
-					</form>
-				</div>
+	<div class="check-out">	 
+		<div class="container">	 
+	 <div class="spec ">
+				<h3>Recommended</h3>
+					<div class="ser-t">
+						<b></b>
+						<span><i></i></span>
+						<b class="line"></b>
+					</div>
 			</div>
-		</div>
-		<!-- newsletter -->
+				<script>$(document).ready(function(c) {
+					$('.close1').on('click', function(c){
+						$('.cross').fadeOut('slow', function(c){
+							$('.cross').remove();
+						});
+						});	  
+					});
+			   </script>
+			<script>$(document).ready(function(c) {
+					$('.close2').on('click', function(c){
+						$('.cross1').fadeOut('slow', function(c){
+							$('.cross1').remove();
+						});
+						});	  
+					});
+			   </script>	
+			   <script>$(document).ready(function(c) {
+					$('.close3').on('click', function(c){
+						$('.cross2').fadeOut('slow', function(c){
+							$('.cross2').remove();
+						});
+						});	  
+					});
+			   </script>	
+ <table class="table ">
+		  <tr>
+			<th class="t-head head-it ">Products</th>
+			<th class="t-head">Name</th>
+			<th class="t-head">Price</th>
+		
+
+			<th class="t-head">Purchase</th>
+		  </tr>
+		  <tr class="cross">
+			<td class="ring-in t-data">
+				<a href="single.php" class="at-in">
+					<img src="images/rec1.jpg" class="img-responsive" alt="">
+				</a>
+
+				<div class="clearfix"> </div>
+				<div class="close1"> <i class="fa fa-times" aria-hidden="true"></i></div>
+			 </td>
+			 <td class="t-data">Eye shades</td>
+			<td class="t-data">$50.00</td>
+
+
+			<td class="t-data">							<form action="#" method="post">
+								<input type="hidden" name="cmd" value="_cart" />
+								<input type="hidden" name="add" value="1" /> 
+								<input type="hidden" name="w3ls1_item" value="Eye shades" /> 
+								<input type="hidden" name="amount" value="50.00" /> 
+								<button type="submit" class="w3ls-cart pw3ls-cart"> <a class=" add-1">Add To Cart</a></button>
+							</form></td>
+			
+		  </tr>
+		  <tr class="cross1">
+		  <td class="t-data ring-in"><a href="single.php" class="at-in"><img src="images/rec3.jpg" class="img-responsive" alt=""></a>
+	
+			<div class="clearfix"> </div>
+							<div class="close2"> <i class="fa fa-times" aria-hidden="true"></i></div>
+</td>
+<td class="t-data">Eye shades</td>
+			<td class="t-data">$80.00</td>
+
+
+
+			<td class="t-data">							<form action="#" method="post">
+								<input type="hidden" name="cmd" value="_cart" />
+								<input type="hidden" name="add" value="1" /> 
+								<input type="hidden" name="w3ls1_item" value="Eye shades" /> 
+								<input type="hidden" name="amount" value="80.00" /> 
+								<button type="submit" class="w3ls-cart pw3ls-cart"> <a class=" add-1">Add To Cart</a></button>
+							</form></td>
+			
+		  </tr>
+		  <tr class="cross2">
+		  <td class="t-data ring-in"><a href="single.php" class="at-in"><img src="images/rec2.jpg" class="img-responsive" alt=""></a>
+
+			<div class="clearfix"> </div>
+				<div class="close3"> <i class="fa fa-times" aria-hidden="true"></i></div>
+			</td>
+			<td class="t-data">Hair oil</td>
+			<td class="t-data">50.00</td>
+
+
+			<td class="t-data">							<form action="#" method="post">
+								<input type="hidden" name="cmd" value="_cart" />
+								<input type="hidden" name="add" value="1" /> 
+								<input type="hidden" name="w3ls1_item" value="Hair oil" /> 
+								<input type="hidden" name="amount" value="50.00" /> 
+								<button type="submit" class="w3ls-cart pw3ls-cart"><a class=" add-1">Add To Cart</a></button>
+							</form></td>
+			
+		  </tr>
+	</table>
+		 </div>
+		 </div>
+		 				
+	<!--quantity-->
+			<script>
+			$('.value-plus').on('click', function(){
+				var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+				divUpd.text(newVal);
+			});
+
+			$('.value-minus').on('click', function(){
+				var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+				if(newVal>=1) divUpd.text(newVal);
+			});
+			</script>
+			<!--quantity-->
+<!-- newsletter -->
 	<div class="newsletter">
 		<div class="container">
 			<div class="col-md-6 w3agile_newsletter_left">
@@ -403,3 +452,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //cart-js -->  
 </body>
 </html>
+
